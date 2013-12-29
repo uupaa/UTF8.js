@@ -1,7 +1,7 @@
 UTF8.js
 =========
 
-UTF8.js は、UTF16(JavaScriptの文字列)とUTF8の相互変換機能を提供します。
+UTF8.js is convert to UTF16 to UTF8.
 
 # Install, Setup modules
 

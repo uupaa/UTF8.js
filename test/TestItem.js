@@ -9,8 +9,8 @@ var test = new UnitTest([
 function testUTF8EncodeDecode(next) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
-    var utf8Array = UTF8.encode( BinaryString.toArray(source) );
-    var revert = BinaryString.fromArray( UTF8.decode(utf8Array) );
+    var utf8Array = UTF8.encode( Binary.BinaryStringToUintArray(source) );
+    var revert = Binary.UintArrayToBinaryString( UTF8.decode(utf8Array) );
 
     if (source === revert) {
         console.log("testUTF8EncodeDecode ok");
