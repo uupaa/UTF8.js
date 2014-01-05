@@ -3,6 +3,10 @@ UTF8.js
 
 UTF8.js is convert to UTF16 to UTF8.
 
+# API Document
+
+https://github.com/uupaa/UTF8.js/wiki/UTF8
+
 # Install, Setup modules
 
 ```sh
@@ -28,9 +32,5 @@ $ npm test
     test success.
     ok.
 ```
-
-# API Document
-
-https://github.com/uupaa/UTF8.js/wiki/UTF8
 
 
