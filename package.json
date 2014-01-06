@@ -9,10 +9,11 @@
   "repository":     { "type": "git", "url": "https://github.com/uupaa/UTF8.js.git" },
   "contributors":   [],
   "devDependencies": {
-    "uupaa.help.js": ">= 0.8.1",
+    "uupaa.help.js": ">= 0.8.0",
     "uupaa.task.js": ">= 0.8.0",
     "uupaa.test.js": ">= 0.8.0",
-    "uupaa.binary.js": ">= 0.8.0"
+    "uupaa.bytearray.js": ">= 0.8.0",
+    "uupaa.wordarray.js": ">= 0.8.0"
   },
   "lib":            "./lib/",
   "main":           "index.js",
