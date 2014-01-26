@@ -1,6 +1,11 @@
 new Test().add([
         testUTF8EncodeDecode,
-    ]).run();
+    ]).run().worker(function(err, test) {
+        if (!err && typeof UTF8_ !== "undefined") {
+            UTF8 = UTF8_;
+            new Test(test).run().worker();
+        }
+    });
 
 function testUTF8EncodeDecode(next) {
 
