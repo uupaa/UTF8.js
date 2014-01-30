@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.utf8.js",
-  "version":        "0.8.6",
+  "version":        "0.8.7",
   "description":    "Convert UTF16 from/to UTF8.",
   "url":            "https://github.com/uupaa/UTF8.js",
   "keywords":       ["utf16", "utf8", "util", "uupaa"],
@@ -13,6 +13,7 @@
     "test":         "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html"
   },
   "devDependencies": {
+    "uupaa.mappedarray.js": "",
     "uupaa.help.js":    "",
     "uupaa.task.js":    "",
     "uupaa.test.js":    "",
