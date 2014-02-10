@@ -1,9 +1,12 @@
 new Test().add([
         testUTF8EncodeDecode,
     ]).run().worker(function(err, test) {
-        if (!err && typeof UTF8_ !== "undefined") {
-            UTF8 = UTF8_;
-            new Test(test).run().worker();
+        if (!err) {
+            var undo = Test.swap(UTF8, UTF8_);
+
+            new Test(test).run(function(err, test) {
+                undo = Test.undo(undo);
+            });
         }
     });
 
