@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.utf8.js",
-  "version":        "0.8.8",
+  "version":        "0.8.9",
   "description":    "Convert UTF16 from/to UTF8.",
   "url":            "https://github.com/uupaa/UTF8.js",
   "keywords":       ["utf16", "utf8", "util", "uupaa"],
@@ -11,6 +11,8 @@
   "scripts": {
     "start":        "node node_modules/uupaa.minify.js --keep --output ./lib/UTF8.min.js ./lib/UTF8.js",
     "test":         "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html"
+  },
+  "dependencies": {
   },
   "devDependencies": {
     "uupaa.help.js":    "",
