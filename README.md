@@ -1,27 +1,61 @@
 UTF8.js
 =========
 
-UTF8.js is convert UTF16(JavaScript String) to UTF8.
+Convert UTF16(JavaScript String) to UTF8.
 
-# API Document
+# Document
 
 https://github.com/uupaa/UTF8.js/wiki/UTF8
 
-# Install, Setup modules
+# How to use
 
-```sh
-$ git clone git@github.com:uupaa/UTF8.js.git
-$ cd UTF8.js
-$ npm install
+```js
+<script src="lib/UTF8.js">
+<script>
+// for Browser
+console.log( UTF8() );
+</script>
 ```
 
-# Test
-
-```sh
-$ npm test
-
-> uupaa.utf8.js@0.8.0 test /Users/username/path/UTF8.js
-> NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html
+```js
+// for WebWorkers
+importScripts("lib/UTF8.js");
+console.log( UTF8() );
 ```
 
+```js
+// for Node.js
+var UTF8 = require("lib/UTF8.js");
+console.log( UTF8() );
+```
+
+# for Developers
+
+1. Install development dependency tools
+
+    ```sh
+    $ brew install closure-compiler
+    $ brew install node
+    $ npm install -g plato
+    ```
+
+2. Clone Repository and Install
+
+    ```sh
+    $ git clone git@github.com:uupaa/UTF8.js.git
+    $ cd UTF8.js
+    $ npm install
+    ```
+
+3. Build and Minify
+
+    `$ npm run build`
+
+4. Test
+
+    `$ npm run test`
+
+5. Lint
+
+    `$ npm run lint`
 
