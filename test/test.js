@@ -1,12 +1,16 @@
 new Test().add([
         testUTF8EncodeAndDecode,
         testUTF8FromAndToString,
-    ]).run().worker(function(err, test) {
-        if (!err) {
-            var name = Test.swap(UTF8, UTF8_);
+    ]).run(function(err, test) {
+        if (1) {
+            err || test.worker(function(err, test) {
+                if (!err && typeof UTF8_ !== "undefined") {
+                    var name = Test.swap(UTF8, UTF8_);
 
-            new Test(test).run(function(err, test) {
-                Test.undo(name);
+                    new Test(test).run(function(err, test) {
+                        Test.undo(name);
+                    });
+                }
             });
         }
     });

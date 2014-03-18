@@ -9,17 +9,16 @@
     "url":          "https://github.com/uupaa/UTF8.js.git"
   },
   "scripts": {
-    "watch":        "node node_modules/uupaa.watch.js --verbose --action build ./lib/UTF8.js",
-    "build":        "node node_modules/uupaa.minify.js --keep --option 'formatting pretty_print' --output ./lib/UTF8.min.js ./lib/UTF8.js",
-    "build-release":"node node_modules/uupaa.minify.js --module all --output ./lib/UTF8.min.js",
+    "watch":        "node node_modules/uupaa.watch.js --verbose --action build",
+    "build":        "node node_modules/uupaa.minify.js --verbose --strict --keep --pretty",
+    "build-simple": "node node_modules/uupaa.minify.js --verbose --strict --keep --pretty --nowrap --simple",
+    "build-release":"node node_modules/uupaa.minify.js --verbose --strict --module",
     "test":         "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html",
-    "lint":         "plato --title UTF8.js --jshint .jshintrc -d lint/plato lib/UTF8.js; open lint/plato/index.html"
+    "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
   },
-  "build": {
-    "all": { "lib/UTF8.js": "" },
-    "node": { },
-    "worker": { },
-    "browser": { }
+  "x-build": {
+    "inputs":       ["lib/UTF8.js"],
+    "output":       "lib/UTF8.min.js"
   },
   "devDependencies": {
     "uupaa.valid.js":   "",
