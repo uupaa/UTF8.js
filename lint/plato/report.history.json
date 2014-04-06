@@ -1,1 +1,24 @@
-[{"date":"Thu, 13 Mar 2014 10:33:06 GMT","total":{"sloc":157,"maintainability":56.893875393736636},"average":{"sloc":157,"maintainability":"56.89"}}]
+[
+  {
+    "date": "Thu, 13 Mar 2014 10:33:06 GMT",
+    "total": {
+      "sloc": 157,
+      "maintainability": 56.893875393736636
+    },
+    "average": {
+      "sloc": 157,
+      "maintainability": "56.89"
+    }
+  },
+  {
+    "date": "Sun, 06 Apr 2014 14:59:17 GMT",
+    "total": {
+      "sloc": 157,
+      "maintainability": 57.00541260596412
+    },
+    "average": {
+      "sloc": 157,
+      "maintainability": "57.01"
+    }
+  }
+]

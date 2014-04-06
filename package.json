@@ -1,9 +1,9 @@
 {
   "name":           "uupaa.utf8.js",
-  "version":        "0.8.12",
+  "version":        "0.8.13",
   "description":    "Convert UTF16(JavaScript String) to UTF8.",
   "url":            "https://github.com/uupaa/UTF8.js",
-  "keywords":       ["utf16", "utf8", "util", "uupaa"],
+  "keywords":       ["utf16", "utf8", "util", "uupaa", "WebModule"],
   "repository": {
     "type":         "git",
     "url":          "https://github.com/uupaa/UTF8.js.git"
@@ -18,16 +18,21 @@
   },
   "x-build": {
     "inputs":       ["lib/UTF8.js"],
-    "output":       "lib/UTF8.min.js"
+    "output":       "release/UTF8.min.js"
+  },
+  "dependencies": {
+    "uupaa.bytearray.js": "",
+    "uupaa.wordarray.js": ""
   },
   "devDependencies": {
+    "uupaa.console.js": "",
     "uupaa.valid.js":   "",
     "uupaa.help.js":    "",
     "uupaa.task.js":    "",
     "uupaa.test.js":    "",
-    "uupaa.minify.js":  "",
-    "uupaa.bytearray.js": "",
-    "uupaa.wordarray.js": ""
+    "uupaa.watch.js":   "",
+    "uupaa.plato.js":   "",
+    "uupaa.minify.js":  ""
   },
   "lib":            "./lib/",
   "main":           "./index.js",

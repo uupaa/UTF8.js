@@ -5,7 +5,12 @@ Convert UTF16(JavaScript String) to UTF8.
 
 # Document
 
-https://github.com/uupaa/UTF8.js/wiki/UTF8
+- https://github.com/uupaa/UTF8.js/wiki/UTF8
+
+and
+
+- https://github.com/uupaa/WebModule and [slide](http://uupaa.github.io/Slide/slide/WebModule/index.html)
+- https://github.com/uupaa/Help.js and [slide](http://uupaa.github.io/Slide/slide/Help.js/index.html)
 
 # How to use
 
