@@ -1,6 +1,7 @@
 new Test().add([
         testUTF8EncodeAndDecode,
         testUTF8FromAndToString,
+        testUTF8EncodeAndDecodeTypedArray,
     ]).run(function(err, test) {
         if (1) {
             err || test.worker(function(err, test) {
@@ -45,3 +46,17 @@ function testUTF8FromAndToString(next) {
     }
 }
 
+function testUTF8EncodeAndDecodeTypedArray(next) {
+
+    var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
+    var uint8Array = UTF8.encode( new Uint32Array( WordArray.fromString(source) ) );
+    var revert = WordArray.toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
+
+    if (source === revert) {
+        console.log("testUTF8EncodeAndDecodeTypedArray ok");
+        next && next.pass();
+    } else {
+        console.log("testUTF8EncodeAndDecodeTypedArray ng");
+        next && next.miss();
+    }
+}
