@@ -1,20 +1,21 @@
-new Test().add([
+var ModuleTestUTF8 = (function(global) {
+
+var _inNode    = "process"        in global;
+var _inWorker  = "WorkerLocation" in global;
+var _inBrowser = "document"       in global;
+
+return new Test("UTF8", {
+        disable:    false,
+        browser:    true,
+        worker:     true,
+        node:       true,
+        button:     true,
+        both:       true,
+    }).add([
         testUTF8EncodeAndDecode,
         testUTF8FromAndToString,
         testUTF8EncodeAndDecodeTypedArray,
-    ]).run(function(err, test) {
-        if (1) {
-            err || test.worker(function(err, test) {
-                if (!err && typeof UTF8_ !== "undefined") {
-                    var name = Test.swap(UTF8, UTF8_);
-
-                    new Test(test).run(function(err, test) {
-                        Test.undo(name);
-                    });
-                }
-            });
-        }
-    });
+    ]).run().clone();
 
 function testUTF8EncodeAndDecode(next) {
 
@@ -23,10 +24,8 @@ function testUTF8EncodeAndDecode(next) {
     var revert = WordArray.toString( UTF8.decode(utf8Array) );
 
     if (source === revert) {
-        console.log("testUTF8EncodeAndDecode ok");
         next && next.pass();
     } else {
-        console.log("testUTF8EncodeAndDecode ng");
         next && next.miss();
     }
 }
@@ -38,10 +37,8 @@ function testUTF8FromAndToString(next) {
     var revert = UTF8.toString(utf8OctetString);
 
     if (source === revert) {
-        console.log("testUTF8FromAndToString ok");
         next && next.pass();
     } else {
-        console.log("testUTF8FromAndToString ng");
         next && next.miss();
     }
 }
@@ -53,10 +50,11 @@ function testUTF8EncodeAndDecodeTypedArray(next) {
     var revert = WordArray.toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
 
     if (source === revert) {
-        console.log("testUTF8EncodeAndDecodeTypedArray ok");
         next && next.pass();
     } else {
-        console.log("testUTF8EncodeAndDecodeTypedArray ng");
         next && next.miss();
     }
 }
+
+})((this || 0).self || global);
+

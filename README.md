@@ -8,9 +8,9 @@ Convert UTF16(JavaScript String) to UTF8.
 
 # Document
 
-- [WebModule](https://github.com/uupaa/WebModule) ([Slide](http://uupaa.github.io/Slide/slide/WebModule/index.html))
-- [Development](https://github.com/uupaa/WebModule/wiki/Development)
 - [UTF8.js wiki](https://github.com/uupaa/UTF8.js/wiki/UTF8)
+- [Development](https://github.com/uupaa/WebModule/wiki/Development)
+- [WebModule](https://github.com/uupaa/WebModule) ([Slide](http://uupaa.github.io/Slide/slide/WebModule/index.html))
 
 
 # How to use
