@@ -1,8 +1,8 @@
 var ModuleTestUTF8 = (function(global) {
 
-var _inNode    = "process"        in global;
-var _inWorker  = "WorkerLocation" in global;
-var _inBrowser = "document"       in global;
+//var _runOnNode = "process" in global;
+//var _runOnWorker = "WorkerLocation" in global;
+//var _runOnBrowser = "document" in global;
 
 return new Test("UTF8", {
         disable:    false,
@@ -20,8 +20,10 @@ return new Test("UTF8", {
 function testUTF8EncodeAndDecode(next) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
-    var utf8Array = UTF8.encode( WordArray.fromString(source) );
-    var revert = WordArray.toString( UTF8.decode(utf8Array) );
+  //var utf8Array = UTF8.encode( WordArray.fromString(source) );
+    var utf8Array = UTF8.encode( DataType["Array"].fromString(source, 2) );
+  //var revert = WordArray.toString( UTF8.decode(utf8Array) );
+    var revert = DataType["Array"].toString( UTF8.decode(utf8Array) );
 
     if (source === revert) {
         next && next.pass();
@@ -46,8 +48,10 @@ function testUTF8FromAndToString(next) {
 function testUTF8EncodeAndDecodeTypedArray(next) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
-    var uint8Array = UTF8.encode( new Uint32Array( WordArray.fromString(source) ) );
-    var revert = WordArray.toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
+  //var uint8Array = UTF8.encode( new Uint32Array( WordArray.fromString(source) ) );
+    var uint8Array = UTF8.encode( new Uint32Array( DataType["Array"].fromString(source, 2) ) );
+  //var revert = WordArray.toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
+    var revert = DataType["Array"].toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
 
     if (source === revert) {
         next && next.pass();
