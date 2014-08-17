@@ -17,7 +17,7 @@ return new Test("UTF8", {
         testUTF8EncodeAndDecodeTypedArray,
     ]).run().clone();
 
-function testUTF8EncodeAndDecode(next) {
+function testUTF8EncodeAndDecode(test, pass, miss) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
   //var utf8Array = UTF8.encode( WordArray.fromString(source) );
@@ -26,26 +26,26 @@ function testUTF8EncodeAndDecode(next) {
     var revert = DataType["Array"].toString( UTF8.decode(utf8Array) );
 
     if (source === revert) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testUTF8FromAndToString(next) {
+function testUTF8FromAndToString(test, pass, miss) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
     var utf8OctetString = UTF8.fromString(source);
     var revert = UTF8.toString(utf8OctetString);
 
     if (source === revert) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testUTF8EncodeAndDecodeTypedArray(next) {
+function testUTF8EncodeAndDecodeTypedArray(test, pass, miss) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
   //var uint8Array = UTF8.encode( new Uint32Array( WordArray.fromString(source) ) );
@@ -54,9 +54,9 @@ function testUTF8EncodeAndDecodeTypedArray(next) {
     var revert = DataType["Array"].toString( Array.prototype.slice.call( UTF8.decode(uint8Array) ) );
 
     if (source === revert) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
