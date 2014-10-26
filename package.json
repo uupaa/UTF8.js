@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.utf8.js",
-  "version":        "0.8.22",
+  "version":        "0.8.23",
   "description":    "Convert UTF16(JavaScript String) to UTF8.",
   "url":            "https://github.com/uupaa/UTF8.js",
   "keywords":       ["utf16", "utf8", "util", "uupaa", "WebModule", "Stable"],
@@ -23,14 +23,16 @@
     "server":       "http-server -c-1 -p 8585 &",
     "server-stop":  "",
     "server-kill":  "killall -- node /usr/local/bin/http-server -p 8585 ; exit 0",
+    "patch":        "node node_modules/uupaa.webmoduleutility.js/index.js --patched",
     "hint":         "jshint lib/*.js",
-    "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
+    "lint":         "npm run coverage",
+    "coverage":     "node node_modules/uupaa.plato.js; open lint/plato/index.html"
   },
   "x-build": {
-    "files":        ["lib/UTF8.js"],
+    "source":       ["lib/UTF8.js"],
     "output":       "release/UTF8.min.js",
     "target":       ["all"],
-    "labels":       ["@dev"],
+    "label":        ["@dev"],
     "module": {
       "develop":    ["uupaa.valid.js"],
       "release":    []
@@ -51,7 +53,7 @@
     "uupaa.plato.js":   "",
     "uupaa.minify.js":  "",
     "uupaa.datatype.js": "",
-    "uupaa.wordarray.js": ""
+    "uupaa.webmoduleutility.js": ""
   },
   "lib":            "./lib/",
   "main":           "./index.js",
