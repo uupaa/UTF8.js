@@ -2,7 +2,7 @@
 
 [![npm](https://nodei.co/npm/uupaa.utf8.js.png?downloads=true&stars=true)](https://nodei.co/npm/uupaa.utf8.js/)
 
-Convert UTF16(JavaScript String) to UTF8.
+Convert UTF8 to UTF16.
 
 ## Document
 
@@ -12,10 +12,9 @@ Convert UTF16(JavaScript String) to UTF8.
     - [Slide](http://uupaa.github.io/Slide/slide/WebModule/index.html)
     - [Development](https://github.com/uupaa/WebModule/wiki/Development)
 
-
 ## How to use
 
-### Browser
+### Browser and node-webkit
 
 ```js
 <script src="lib/UTF8.js"></script>
@@ -32,8 +31,6 @@ console.log( UTF8.fromString( source ) );
 ```js
 importScripts("lib/UTF8.js");
 
-var source = "\u3042\u3044\u3046\u3048\u304a";
-console.log( UTF8.fromString( source ) );
 ```
 
 ### Node.js
@@ -41,6 +38,4 @@ console.log( UTF8.fromString( source ) );
 ```js
 var UTF8 = require("lib/UTF8.js");
 
-var source = "\u3042\u3044\u3046\u3048\u304a";
-console.log( UTF8.fromString( source ) );
 ```

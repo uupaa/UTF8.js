@@ -1,29 +1,22 @@
 {
   "name": "uupaa.utf8.js",
-  "version": "0.8.25",
-  "description": "Convert UTF16(JavaScript String) to UTF8.",
+  "version": "0.9.0",
+  "description": "Convert UTF8 to UTF16",
   "url": "https://github.com/uupaa/UTF8.js",
-  "keywords": [
-    "utf16",
-    "utf8",
-    "util",
-    "uupaa",
-    "WebModule",
-    "Stable"
-  ],
+  "keywords": ["utf16", "utf8", "unicode", "uupaa", "WebModule"],
   "repository": {
     "type": "git",
     "url": "https://github.com/uupaa/UTF8.js.git"
   },
   "scripts": {
     "sync": "node ../WebModule/run/sync.js; npm update; node ../WebModule/run/page.js",
-    "watch": "node ../WebModule/run/watch.js --verbose --action minify",
-    "minify": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
-    "build": "node ../WebModule/run/minify.js --verbose --strict --module",
+    "min": "node ../WebModule/run/minify.js --verbose --strict --keep --pretty",
+    "build": "node ../WebModule/run/minify.js --verbose --strict --keep --release",
+    "watch": "node ../WebModule/run/watch.js --verbose --run hint",
     "page": "node ../WebModule/run/page.js --verbose",
-    "test": "npm run minify; npm run node; npm run browser",
-    "node": "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js",
-    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk --harmony test/index.node.js",
+    "test": "npm run min; npm run node; npm run browser",
+    "node": "NODE_ENV=production NODE_PATH=lib node --harmony test/node.js",
+    "noded": "NODE_ENV=production NODE_PATH=lib node --debug-brk --harmony test/node.js",
     "browser": "open http://localhost:8000/UTF8.js/test/index.html",
     "sim": "node ../WebModule/run/sim.js http://localhost:8000/UTF8.js/test/index.html",
     "simx": "node ../WebModule/run/sim.js stop",
@@ -35,21 +28,27 @@
     "stop": "killall -- Python -m SimpleHTTPServer 8000; exit 0"
   },
   "webmodule": {
-    "source": [
-      "lib/UTF8.js"
-    ],
-    "output": "release/UTF8.min.js",
-    "target": [
-      "all"
-    ],
-    "label": [
-      "@dev"
-    ]
+    "develop": false,
+    "label": ["@dev"],
+    "browser": {
+      "source": ["lib/UTF8.js"],
+      "output": "release/UTF8.b.min.js"
+    },
+    "worker": {
+      "source": ["lib/UTF8.js"],
+      "output": "release/UTF8.w.min.js"
+    },
+    "node": {
+      "source": ["lib/UTF8.js"],
+      "output": "release/UTF8.n.min.js"
+    },
+    "nw": {
+      "source": ["lib/UTF8.js"],
+      "output": "release/UTF8.nw.min.js"
+    }
   },
   "dependencies": {},
-  "devDependencies": {
-    "uupaa.datatype.js": ""
-  },
+  "devDependencies": {},
   "lib": "./lib/",
   "main": "./index.js",
   "author": "uupaa <uupaa.js@gmail.com>",
