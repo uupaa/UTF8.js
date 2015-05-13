@@ -1,6 +1,6 @@
 {
   "name": "uupaa.utf8.js",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Convert UTF8 to UTF16",
   "url": "https://github.com/uupaa/UTF8.js",
   "keywords": ["utf16", "utf8", "unicode", "uupaa", "WebModule"],

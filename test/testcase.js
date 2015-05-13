@@ -15,17 +15,30 @@ if (console) {
 }
 
 var test = new Test("UTF8", {
-        disable:    false,
-        browser:    true,
-        worker:     true,
-        node:       true,
-        button:     true,
-        both:       true,
+        disable:    false, // disable all tests.
+        browser:    true,  // enable browser test.
+        worker:     true,  // enable worker test.
+        node:       true,  // enable node test.
+        nw:         true,  // enable nw.js test.
+        button:     true,  // show button.
+        both:       true,  // test the primary and secondary modules.
+        ignoreError:false, // ignore error.
     }).add([
         testUTF8_from_to_string,
         testUTF8_encode_and_decode,
     ]);
 
+if (_runOnBrowser || _runOnNodeWebKit) {
+    test.add([
+        testUTF8_Blob_fromString,
+    ]);
+} else if (_runOnWorker) {
+    test.add([
+        testUTF8_Blob_fromString,
+    ]);
+} else if (_runOnNode) {
+    //test.add([]);
+}
 
 function testUTF8_from_to_string(test, pass, miss) {
 
@@ -70,6 +83,27 @@ function testUTF8_encode_and_decode(test, pass, miss) {
     } else {
         test.done(pass());
     }
+}
+
+function testUTF8_Blob_fromString(test, pass, miss) {
+    var blob = UTF8.Blob.fromString("あいう"); // to UTF8 blob
+
+    var reader = new FileReader();
+    reader.onloadend = function(event) {
+        var u8 = new Uint8Array(event.target.result);
+        console.log( u8 ); // [227, 129, 130,  227, 129, 132,  227, 129, 134]
+        console.log( UTF8.decode(u8, true) ); // "あいう"
+    };
+    reader.readAsArrayBuffer(blob);
+
+
+    UTF8.Blob.toString(blob, function(result) {
+        if (result === "あいう") {
+            test.done(pass());
+        } else {
+            test.done(miss());
+        }
+    });
 }
 
 return test.run().clone();
