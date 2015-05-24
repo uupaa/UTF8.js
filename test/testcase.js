@@ -1,18 +1,6 @@
 var ModuleTestUTF8 = (function(global) {
 
-var _isNodeOrNodeWebKit = !!global.global;
-var _runOnNodeWebKit =  _isNodeOrNodeWebKit &&  /native/.test(setTimeout);
-var _runOnNode       =  _isNodeOrNodeWebKit && !/native/.test(setTimeout);
-var _runOnWorker     = !_isNodeOrNodeWebKit && "WorkerLocation" in global;
-var _runOnBrowser    = !_isNodeOrNodeWebKit && "document" in global;
-
-global["BENCHMARK"] = true;
-
-if (console) {
-    if (!console.table) {
-        console.table = console.dir;
-    }
-}
+global["BENCHMARK"] = false;
 
 var test = new Test("UTF8", {
         disable:    false, // disable all tests.
@@ -23,23 +11,30 @@ var test = new Test("UTF8", {
         button:     true,  // show button.
         both:       true,  // test the primary and secondary modules.
         ignoreError:false, // ignore error.
+        callback:   function() {
+        },
+        errorback:  function(error) {
+        }
     }).add([
         testUTF8_from_to_string,
         testUTF8_encode_and_decode,
     ]);
 
-if (_runOnBrowser || _runOnNodeWebKit) {
+if (IN_BROWSER || IN_NW) {
     test.add([
         testUTF8_Blob_fromString,
     ]);
-} else if (_runOnWorker) {
+} else if (IN_WORKER) {
     test.add([
         testUTF8_Blob_fromString,
     ]);
-} else if (_runOnNode) {
-    //test.add([]);
+} else if (IN_NODE) {
+    test.add([
+        // node.js and io.js test
+    ]);
 }
 
+// --- test cases ------------------------------------------
 function testUTF8_from_to_string(test, pass, miss) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
@@ -106,7 +101,7 @@ function testUTF8_Blob_fromString(test, pass, miss) {
     });
 }
 
-return test.run().clone();
+return test.run();
 
-})((this || 0).self || global);
+})(GLOBAL);
 

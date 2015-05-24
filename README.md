@@ -7,12 +7,11 @@ Convert UTF8 to UTF16.
 ## Document
 
 - [UTF8.js wiki](https://github.com/uupaa/UTF8.js/wiki/UTF8)
-- [Development](https://github.com/uupaa/WebModule/wiki/Development)
 - [WebModule](https://github.com/uupaa/WebModule)
     - [Slide](http://uupaa.github.io/Slide/slide/WebModule/index.html)
     - [Development](https://github.com/uupaa/WebModule/wiki/Development)
 
-## How to use
+## Run on
 
 ### Browser and node-webkit
 
@@ -36,6 +35,7 @@ importScripts("lib/UTF8.js");
 ### Node.js
 
 ```js
-var UTF8 = require("lib/UTF8.js");
+require("lib/UTF8.js");
 
 ```
+
