@@ -38,8 +38,8 @@ if (IN_BROWSER || IN_NW) {
 function testUTF8_from_to_string(test, pass, miss) {
 
     var source = "\u3042\u3044\u3046\u3048\u304a"; // <japanese> A I U E O </japanese>
-    var utf8   = UTF8.fromString(source);
-    var result = UTF8.toString(utf8);
+    var utf8   = WebModule.UTF8.fromString(source);
+    var result = WebModule.UTF8.toString(utf8);
 
     if (source === result) {
         test.done(pass());
@@ -52,16 +52,16 @@ function testUTF8_encode_and_decode(test, pass, miss) {
 
     var source = [0x3042, 0x3044, 0x3046, 0x3048, 0x304a]; // <japanese> A I U E O </japanese>
     var cases = {
-            "fromUint32": UTF8.encode( new Uint32Array(source) ),
-            "fromUint16": UTF8.encode( new Uint16Array(source) ),
-            "fromUint8":  UTF8.encode( new Uint8Array(source) ),
-            "fromString": UTF8.encode( String.fromCharCode.apply(null, source) ),
+            "fromUint32": WebModule.UTF8.encode( new Uint32Array(source) ),
+            "fromUint16": WebModule.UTF8.encode( new Uint16Array(source) ),
+            "fromUint8":  WebModule.UTF8.encode( new Uint8Array(source) ),
+            "fromString": WebModule.UTF8.encode( String.fromCharCode.apply(null, source) ),
         };
     var result = {
-            "fromUint32": UTF8.decode(cases.fromUint32, true),
-            "fromUint16": UTF8.decode(cases.fromUint16, true),
-            "fromUint8":  UTF8.decode(cases.fromUint8,  true),
-            "fromString": UTF8.decode(cases.fromString, true),
+            "fromUint32": WebModule.UTF8.decode(cases.fromUint32, true),
+            "fromUint16": WebModule.UTF8.decode(cases.fromUint16, true),
+            "fromUint8":  WebModule.UTF8.decode(cases.fromUint8,  true),
+            "fromString": WebModule.UTF8.decode(cases.fromString, true),
         };
     var verify = {
         "1": String.fromCharCode.apply(null, source) === result.fromUint32,
@@ -81,18 +81,18 @@ function testUTF8_encode_and_decode(test, pass, miss) {
 }
 
 function testUTF8_Blob_fromString(test, pass, miss) {
-    var blob = UTF8.Blob.fromString("あいう"); // to UTF8 blob
+    var blob = WebModule.UTF8.Blob.fromString("あいう"); // to UTF8 blob
 
     var reader = new FileReader();
     reader.onloadend = function(event) {
         var u8 = new Uint8Array(event.target.result);
         console.log( u8 ); // [227, 129, 130,  227, 129, 132,  227, 129, 134]
-        console.log( UTF8.decode(u8, true) ); // "あいう"
+        console.log( WebModule.UTF8.decode(u8, true) ); // "あいう"
     };
     reader.readAsArrayBuffer(blob);
 
 
-    UTF8.Blob.toString(blob, function(result) {
+    WebModule.UTF8.Blob.toString(blob, function(result) {
         if (result === "あいう") {
             test.done(pass());
         } else {
